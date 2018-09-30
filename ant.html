@@ -10,30 +10,12 @@
     <script src="js/leaflet.js"></script>
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/bootstrap.bundle.js"></script>
-   <script src="https://unpkg.com/leaflet" type="text/javascript"></script>
-   <script src="https://unpkg.com/leaflet-ant-path" type="text/javascript"></script>
+ 
 </head>
 <body>
 <div id="lmap"></div>
 <script>
     var map = L.map('lmap').setView([39, 116], 5);
-    var coords = [];
-　 route.forEach(function(e, i) {
-　　　　coords.push(e.reverse())
-　　});
-
-　　var antPath = L.polyline.antPath;
-　　var path = antPath(coords, {
-　　　　"paused": false,   　　//暂停  初始化状态
-　　　　"reverse": false,　　//方向反转
-　　　　"delay": 3000,　　　　//延迟，数值越大效果越缓慢
-　　　　"dashArray": [10, 20],　//间隔样式
-　　　　"weight": 5,　　　　//线宽
-　　　　"opacity": 0.5,　　//透明度
-　　　　"color": "#0000FF",　//颜色
-　　　　"pulseColor": "#FFFFFF"　　//块颜色
-　　});
-　　path.addTo(map);
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
