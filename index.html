@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flow GIS</title>
+    <link rel="stylesheet" href="css/leaflet.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/all.css">
+
+    <script src="js/leaflet.js"></script>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/bootstrap.bundle.js"></script>
+    <script src="js/MovingMarker.js"></script>
+    <script src="js/leaflet-ant-path.js"></script>
+
+</head>
+<body>
+
+<div id="lmap"></div>
+<script>
+    var map = L.map('lmap').setView([39, 116], 5);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+    
+    var latlngs = [[50,30],[70,90],[60,90],[40,120],[30,100]];
+    var antPolyline = new L.polyline.antPath(latlngs, {color:'red',weight:3});
+    antPolyline.addTo(map);
+    map.fitBounds(polyline.getBounds());
+
+//moving control
+   /* var latlngs2 = [[40,30],[60,90],[50,90],[30,120],[20,100]];
+    var marker = L.Marker.movingMarker(latlngs,[1000,2000,3000,4000]).addTo(map);
+    marker.once('click', function () {
+    marker.start();
+    marker.closePopup();
+    marker.unbindPopup();
+    marker.on('click', function() {
+        if (marker.isRunning()) {
+            marker.pause();
+        } else {
+            marker.start();
+        }
+    });
+    setTimeout(function() {
+        marker.bindPopup('<b>Click me to pause !</b>').openPopup();
+    }, 2000);
+});
+marker.bindPopup('<b>Click me to start !</b>', {closeOnClick: false});
+marker.openPopup();
+//automatic moving
+var marker2 = L.Marker.movingMarker(latlngs2,
+    [3000, 2000, 5000, 3000], {autostart: true}).addTo(map);
+var p = new L.polyline(latlngs2, {color: 'red'}).addTo(map);
+map.fitBounds(latlngs2);
+
+marker2.on('end', function() {
+    marker2.bindPopup('<b>Welcome to Bucarest !</b><br>GitHub Page: <a target="\\blanck" href="https://github.com/ewoken/Leaflet.MovingMarker"><img src="github.png"></a>', {closeOnClick: false})
+    .openPopup();
+});
+    */
+</script>
+</body>
+</html>
